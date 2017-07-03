@@ -1,0 +1,30 @@
+{
+    "presets": [
+        ["env", {
+            "targets": {
+                "node": true,
+                "browsers": [
+                    "last 2 Chrome versions"
+                ]
+            },
+            "loose": true,
+            "modules": false,
+            "debug": false
+        }],
+        "react"
+    ],
+    "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread",
+        "syntax-dynamic-import",
+        "react-hot-loader/babel",
+        ["react-css-modules", {
+            "generateScopedName": "[name]__[local]",
+            "filetypes": {
+                ".scss": {
+                    "syntax": "postcss-scss"
+                }
+            }
+        }]
+    ]
+}
