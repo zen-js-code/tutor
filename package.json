@@ -2,10 +2,8 @@
   "name": "tutor",
   "version": "0.0.1-alpha.1",
   "scripts": {
-    "dll": "webpack --config build/config/webpack.dll.config.js",
-    "app": "webpack --config build/config/webpack.config.js",
-    "start": "webpack-dev-server --hot --config build/config/webpack.config.js",
-    "build": "run-s dll app"
+    "build": "webpack --config build/config/webpack.config.js",
+    "start": "webpack-dev-server --hot --config build/config/webpack.config.js"
   },
   "license": "UNLICENSED",
   "repository": "git@github.com:zen-js-code/tutor.git",

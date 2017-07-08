@@ -4,6 +4,7 @@ const PATH = require('path');
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const autoprefixer = require('autoprefixer');
 
 const ROOT = '../../';
@@ -32,6 +33,12 @@ const config = {
         chunkFilename: '[id].[name].js',
         path: JS_ASSETS_DIR,
         publicPath: PUBLIC_PATH
+    },
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+        'react-router': 'ReactRouter',
+        'react-router-dom': 'ReactRouterDOM'
     },
     cache: true,
     devServer: {
@@ -62,9 +69,6 @@ const config = {
         watchContentBase: true
     },
     plugins: [
-        new webpack.DllReferencePlugin({
-            manifest: PATH.resolve(JS_ASSETS_DIR, 'vendor.manifest.json'),
-        }),
         new webpack.SourceMapDevToolPlugin({
             filename: '[name].js.map',
             columns: false
@@ -75,19 +79,7 @@ const config = {
             cache: true,
             inject: false,
             template: INDEX_HTML_FILE
-        }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'vendor',
-        //     filename: 'vendor.js',
-        //     minChunks: function(module){
-        //         return module.context && module.context.indexOf('node_modules') !== -1;
-        //     }
-        // }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     children: true,
-        //     async: true,
-        //     minChunks: 2
-        // })
+        })
     ],
     module: {
         rules: [
