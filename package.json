@@ -2,9 +2,12 @@
   "name": "tutor",
   "version": "0.0.1-alpha.1",
   "scripts": {
+    "dll": "webpack --config build/config/webpack.dll.config.js",
+    "app": "webpack --config build/config/webpack.config.js",
     "start": "webpack-dev-server --hot --config build/config/webpack.config.js",
-    "build": "webpack --config build/config/webpack.config.js"
+    "build": "run-s dll app"
   },
+  "license": "UNLICENSED",
   "repository": "git@github.com:zen-js-code/tutor.git",
   "author": "dnutels <dmitry.nutels@naturalint.com>",
   "devDependencies": {
@@ -27,10 +30,14 @@
     "eslint-plugin-react": "^7.1.0",
     "html-webpack-plugin": "^2.29.0",
     "node-sass": "^4.5.3",
+    "npm-run-all": "^4.0.2",
+    "optimize-js-plugin": "^0.0.4",
     "postcss-loader": "^2.0.6",
     "postcss-scss": "^1.0.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
+    "uglify-es": "^3.0.24",
+    "uglifyjs-webpack-plugin": "1.0.0-beta.1",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
   },

@@ -35,6 +35,21 @@ const config = {
     },
     cache: true,
     devServer: {
+        stats: {
+            assets: true,
+            cached: false,
+            cachedAssets: false,
+            children: false,
+            chunks: false,
+            chunkModules: false,
+            colors: true,
+            hash: false,
+            modules: false,
+            reasons: false,
+            source: false,
+            timings: false,
+            version: false
+        },
         hot: true,
         port: 3030,
         contentBase: PUBLIC_DIR,
@@ -47,9 +62,11 @@ const config = {
         watchContentBase: true
     },
     plugins: [
+        new webpack.DllReferencePlugin({
+            manifest: PATH.resolve(JS_ASSETS_DIR, 'vendor.manifest.json'),
+        }),
         new webpack.SourceMapDevToolPlugin({
             filename: '[name].js.map',
-            exclude: ['vendor.js'],
             columns: false
         }),
         new HtmlWebpackPlugin({
@@ -59,18 +76,18 @@ const config = {
             inject: false,
             template: INDEX_HTML_FILE
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: 'vendor.js',
-            minChunks: function(module){
-                return module.context && module.context.indexOf('node_modules') !== -1;
-            }
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            children: true,
-            async: true,
-            minChunks: 2
-        })
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'vendor',
+        //     filename: 'vendor.js',
+        //     minChunks: function(module){
+        //         return module.context && module.context.indexOf('node_modules') !== -1;
+        //     }
+        // }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     children: true,
+        //     async: true,
+        //     minChunks: 2
+        // })
     ],
     module: {
         rules: [
