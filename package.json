@@ -2,10 +2,12 @@
   "name": "tutor",
   "version": "0.0.1-alpha.1",
   "scripts": {
+    "clean": "rimraf dist/",
     "dll": "webpack --config build/config/webpack.dll.config.js",
     "app": "webpack --config build/config/webpack.config.js",
+    "prestart": "run-s clean dll app",
     "start": "webpack-dev-server --hot --config build/config/webpack.config.js",
-    "build": "run-s dll app"
+    "build": "run-s clean dll app"
   },
   "license": "UNLICENSED",
   "repository": "git@github.com:zen-js-code/tutor.git",

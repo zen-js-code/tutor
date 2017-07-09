@@ -75,19 +75,7 @@ const config = {
             cache: true,
             inject: false,
             template: INDEX_HTML_FILE
-        }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'vendor',
-        //     filename: 'vendor.js',
-        //     minChunks: function(module){
-        //         return module.context && module.context.indexOf('node_modules') !== -1;
-        //     }
-        // }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     children: true,
-        //     async: true,
-        //     minChunks: 2
-        // })
+        })
     ],
     module: {
         rules: [
